@@ -91,22 +91,42 @@ namespace luckuCafeOrder
 
                         }
                         double total = price * quantity;
+                        double beforediscount = total;
+                        double afterdiscount = total;
 
                         if (cbxstudent.Checked)
                         {
 
-                            total = total * 0.9;
+
+
+                            double discount = total * 0.10;
+                            afterdiscount = total - discount;
+
+                            LstOrderLisft.Items.Add("-----------------");
+                            LstOrderLisft.Items.Add("Member discount");
+                            LstOrderLisft.Items.Add("before discount" + beforediscount.ToString("f2"));
+                            LstOrderLisft.Items.Add("after discount" + afterdiscount.ToString("f2"));
+
+                            total = afterdiscount;
+
+
 
                         }
+                        
                         lbltotalprice.Text = "Total price:$ " + total.ToString("f2");
 
                         if (lucky)
                         {
                             lblluckymassege.Text = "You got a free  cookie!";
+                            LstOrderLisft.Items.Add("----------------");
+                            LstOrderLisft.Items.Add("you got a free cookie");
+
                         }
                         else
                         {
                             lblluckymassege.Text = "No prize this time.";
+                            LstOrderLisft.Items.Add("----------------");
+                            LstOrderLisft.Items.Add("no prize this time");
                         }
 
 
